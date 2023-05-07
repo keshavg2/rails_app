@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="panel panel-default" style="margin-top: 1.5%;">
+    <div class="panel-body">
+      <h1>Send Referral</h1>
+      <%= form_with url: '/user/send_mail', method: :post do |f| %>
+        <div class="vertical-center">
+          <div>
+            <%= f.label :label, 'Email:', class: "control-label" %>
+            <%= f.text_field :email,  class: 'form-control' %>
+          </div>
+          <%= f.submit "Send", class: "btn btn-orange mt-2" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

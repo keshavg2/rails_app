@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="panel panel-default" style="margin-top: 1.5%;">
+    <div class="panel-body">
+      <h1>Referral User</h1>
+      <%= link_to 'Logout', destroy_user_session_path %>
+      <table class="table table-striped" style="table-layout: fixed; width: 100%" >
+        <thead>
+        <tr>
+          <th>Index</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @user&.each_with_index do |user, index| %>
+          <tr>
+            <td style="text-align:left !important;"><%= index + 1 %></td>
+            <td><%=user&.email %></td>
+            <td><%=user&.status %></td>
+            <td>
+            <% if (user&.action_count.present? ? user&.action_count : 0) < 5 %>
+             <%= link_to 'Resend Invite', user_send_email_path(email: user&.email)%>
+            <% else %>
+              Don't Send the Invite
+              <% end %>
+                </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
